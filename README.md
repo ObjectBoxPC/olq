@@ -14,6 +14,10 @@ The main program is compatible with C89 and makes very few assumptions. The code
 
 The declaration for `printf` at the beginning is needed because other code cannot be on the same line as an `#include`, which poses a problem for a one-line program.
 
+## C#
+
+The program is compatible with C# 1.0 and essentially all implementations of the BCL.
+
 ## Haskell
 
 The program is compatible with Haskell 98.
