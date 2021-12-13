@@ -1,0 +1,1 @@
+my $p = 'my $p = %s%s%1$s; printf $p, "%1$s", $p;'; printf $p, "'", $p;

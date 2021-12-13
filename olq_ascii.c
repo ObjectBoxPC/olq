@@ -1,0 +1,1 @@
+int printf(const char *, ...); int main(void) { char * p = "int printf(const char *, ...); int main(void) { char * p = %c%s%c; printf(p, 34, p, 34); return 0; }"; printf(p, 34, p, 34); return 0; }

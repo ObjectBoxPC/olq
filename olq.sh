@@ -1,0 +1,1 @@
+Q=\'; P='Q=\%s; P=%s%s%s; printf "$P" $Q $Q "$P" $Q'; printf "$P" $Q $Q "$P" $Q

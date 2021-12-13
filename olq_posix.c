@@ -1,0 +1,1 @@
+int printf(const char *, ...); int main(void) { int q = '"'; char * p = "int printf(const char *, ...); int main(void) { int q = '%1$c'; char * p = %1$c%2$s%1$c; printf(p, q, p); return 0; }"; printf(p, q, p); return 0; }

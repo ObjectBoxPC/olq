@@ -1,0 +1,1 @@
+my $p = 'my $p = %c%s%1$c; printf $p, 39, $p;'; printf $p, 39, $p;

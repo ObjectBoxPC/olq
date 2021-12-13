@@ -1,0 +1,1 @@
+main = putStr $ p ++ show p where p = "main = putStr $ p ++ show p where p = "
