@@ -1,1 +1,1 @@
-class P { public static void main(String[] a) { String p = "class P { public static void main(String[] a) { String p = %c%s%1$c; System.out.printf(p, '%<c', p); } }"; System.out.printf(p, '"', p); } }
+class Q { public static void main(String[] a) { String p = "class Q { public static void main(String[] a) { String p = %c%s%1$c; System.out.printf(p, '%<c', p); } }"; System.out.printf(p, '"', p); } }
