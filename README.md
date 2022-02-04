@@ -4,7 +4,7 @@ This is a collection of one-line quines in several languages. A quine is a progr
 
 Although the quines are only one line, they are not attempts to find the shortest quines possible. Many "redundant" parts are kept to maintain some readability and good style. The quines are also meant to be portable across a wide variety of implementations, although some alternatives are provided that make certain assumptions.
 
-All code is dedicated to the public domain under [Creative Commons CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). A copy is available in `LICENSE.txt`
+All original code is dedicated to the public domain under [Creative Commons CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (a copy is available in `LICENSE.txt`). The Rust code is available under [Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/) (a copy is available in `LICENSE-Rust.txt`), as it is derived from code that uses that license.
 
 Note: Some files have a newline at the end while others do not. This is intentional because the output functions available in different languages either add a newline or omit it. In most cases it is easy to adjust the program to either add or remove a newline at the end of the file.
 
