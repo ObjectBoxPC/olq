@@ -36,7 +36,7 @@ The program is compatible with Java SE 5 (when the `PrintStream.printf` and rela
 
 ## JavaScript
 
-The main program is compatible with ECMAScript 5 (when the JSON functions were added). The code can be shorted by using some ECMAScript 6 features (`olq_es6.js`), namely template literals and arrow functions.
+The main program is compatible with ECMAScript 5 (when the JSON functions were added). The code can be shortened by using some ECMAScript 6 features (`olq_es6.js`), namely template literals and arrow functions.
 
 ## Perl
 
@@ -44,11 +44,11 @@ The main program is compatible with Perl 5.8.0 (when the POSIX-style positional 
 
 ## Python
 
-The main program uses the `str.format` method introduced in Python 3, even though the code using the older printf-style string formatting (`olq_percent.py`) is shorter.
+The main program uses the `str.format` method introduced in Python 3, even though the code that uses the older printf-style string formatting (`olq_percent.py`) is shorter.
 
 ## Rust
 
-This posed a challenge because the format string to `print!` and related macros must be a string literal, which means that a format string cannot be its own argument as in other languages. The solution is admittedly not original, as it is taken from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v.
+This posed a challenge because the format string to `print!` and related macros must be a string literal, which means that a format string cannot be its own argument as in other languages. The solution is admittedly not original, as it is adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v.
 
 ## Shell
 
