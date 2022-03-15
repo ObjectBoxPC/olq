@@ -1,0 +1,1 @@
+<?php $p = '<?php $p = \'%s\'; printf($p, addslashes($p));'; printf($p, addslashes($p));

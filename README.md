@@ -42,6 +42,10 @@ The main program is compatible with ECMAScript 5 (when the JSON functions were a
 
 The main program is compatible with Perl 5.8.0 (when the POSIX-style positional format specifiers were introduced for `printf`). Like in C, the main program does not assume a particular character encoding, although it does use POSIX-style positional format specifiers as mentioned previously. The code can be shortened a bit by assuming that the character encoding is ASCII (`olq_ascii.pl`).
 
+## PHP
+
+The program is compatible with PHP 4.
+
 ## Python
 
 The main program uses the `str.format` method introduced in Python 3, even though the code that uses the older printf-style string formatting (`olq_percent.py`) is shorter.
