@@ -1,0 +1,1 @@
+package main; import "fmt"; func main() { p := "package main; import \"fmt\"; func main() { p := %#v; fmt.Printf(p, p) }"; fmt.Printf(p, p) }

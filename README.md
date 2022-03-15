@@ -26,6 +26,10 @@ The declaration for `printf` at the beginning is needed because other code canno
 
 The program is compatible with C# 1.0 and essentially all implementations of the BCL.
 
+## Go
+
+The program is compatible with Go 1.
+
 ## Haskell
 
 The program is compatible with Haskell 98.
