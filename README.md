@@ -28,7 +28,7 @@ The program is compatible with C# 1.0 and essentially all implementations of the
 
 ## Emojicode
 
-The program is compatible with Emojicode 0.7.0 and later (until Emojicode 1.0 beta 2).
+The program is compatible with Emojicode 0.7.0 and later (latest version tested is Emojicode 1.0 beta 2).
 
 ## Go
 
