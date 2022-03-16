@@ -26,6 +26,10 @@ The declaration for `printf` at the beginning is needed because other code canno
 
 The program is compatible with C# 1.0 and essentially all implementations of the BCL.
 
+## Emojicode
+
+The program is compatible with Emojicode 0.7.0 and later (until Emojicode 1.0 beta 2).
+
 ## Go
 
 The program is compatible with Go 1.
