@@ -1,5 +1,18 @@
 jobs:
   include:
+    - name: assembly
+      language: minimal
+      before_install:
+        - sudo apt-get update -qq
+        - sudo apt-get install -y binutils-i686-linux-gnu
+      before_script:
+        - as -o olq_linux_x86-64.o olq_linux_x86-64.s
+        - ld -o olq_linux_x86-64 olq_linux_x86-64.o
+        - i686-linux-gnu-as -o olq_linux_x86.o olq_linux_x86.s
+        - i686-linux-gnu-ld -o olq_linux_x86 olq_linux_x86.o
+      script:
+        - cmp olq_linux_x86-64.s <(./olq_linux_x86-64)
+        - cmp olq_linux_x86.s <(./olq_linux_x86)
     - name: c
       language: c
       before_script:
