@@ -59,6 +59,8 @@ jobs:
         - cmp olq.java <(java Q)
     - name: javascript
       language: node_js
+      node_js:
+        - node
       install: skip
       script:
         - cmp olq.js <(node olq.js)
