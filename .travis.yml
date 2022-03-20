@@ -1,0 +1,97 @@
+jobs:
+  include:
+    - name: assembly
+      language: minimal
+      dist: bionic
+      before_install:
+        - sudo apt-get update -qq
+        - sudo apt-get install -y binutils-i686-linux-gnu
+      before_script:
+        - as -o olq_linux_x86-64.o olq_linux_x86-64.s
+        - ld -o olq_linux_x86-64 olq_linux_x86-64.o
+        - i686-linux-gnu-as -o olq_linux_x86.o olq_linux_x86.s
+        - i686-linux-gnu-ld -o olq_linux_x86 olq_linux_x86.o
+      script:
+        - cmp olq_linux_x86-64.s <(./olq_linux_x86-64)
+        - cmp olq_linux_x86.s <(./olq_linux_x86)
+    - name: c
+      language: c
+      before_script:
+        - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
+        - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
+        - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_posix olq_posix.c
+      script:
+        - cmp olq.c <(./olq)
+        - cmp olq_ascii.c <(./olq_ascii)
+        - cmp olq_posix.c <(./olq_posix)
+    - name: csharp
+      language: csharp
+      install: skip
+      before_script:
+        - csc olq.cs
+      script:
+        - cmp olq.cs <(mono olq.exe)
+    - name: emojicode
+      language: minimal
+      dist: bionic
+      before_install:
+        - wget https://github.com/emojicode/emojicode/releases/download/v1.0-beta.2/Emojicode-1.0-beta.2-Linux-x86_64.tar.gz -O emojicode.tar.gz
+        - tar -xzf emojicode.tar.gz
+      before_script:
+        - (cd Emojicode-1.0-beta.2-Linux-x86_64 && ./emojicodec ../olq.emojic)
+      script:
+        - cmp olq.emojic <(./olq)
+    - name: go
+      language: go
+      install: skip
+      script:
+        - cmp olq.go <(go run olq.go)
+    - name: haskell
+      language: haskell
+      install: skip
+      script:
+        - cmp olq.hs <(runghc olq.hs)
+    - name: java
+      language: java
+      install: skip
+      before_script:
+        - javac olq.java
+      script:
+        - cmp olq.java <(java Q)
+    - name: javascript
+      language: node_js
+      node_js:
+        - node
+      install: skip
+      script:
+        - cmp olq.js <(node olq.js)
+        - cmp olq_es6.js <(node olq_es6.js)
+    - name: perl
+      language: perl
+      install: skip
+      script:
+        - cmp olq.pl <(perl olq.pl)
+        - cmp olq_ascii.pl <(perl olq_ascii.pl)
+    - name: php
+      language: php
+      script:
+        - cmp olq.php <(php olq.php)
+    - name: python
+      language: python
+      install: skip
+      script:
+        - cmp olq.py <(python olq.py)
+        - cmp olq_percent.py <(python olq_percent.py)
+    - name: rust
+      language: rust
+      install: skip
+      before_script:
+        - rustc olq.rs
+      script:
+        - cmp olq.rs <(./olq)
+    - name: shell
+      language: minimal
+      script:
+        - cmp olq.sh <(sh olq.sh)
+notifications:
+  email: false
