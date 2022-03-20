@@ -37,7 +37,7 @@ jobs:
         - wget https://github.com/emojicode/emojicode/releases/download/v1.0-beta.2/Emojicode-1.0-beta.2-Linux-x86_64.tar.gz -O emojicode.tar.gz
         - tar -xzf emojicode.tar.gz
       before_script:
-        - Emojicode-1.0-beta.2-Linux-x86_64/emojicodec olq.emojic
+        - (cd Emojicode-1.0-beta.2-Linux-x86_64 && ./emojicodec ../olq.emojic)
       script:
         - cmp olq.emojic <(./olq)
     - name: go
