@@ -1,6 +1,7 @@
 jobs:
   include:
-    - language: c
+    - name: c
+      language: c
       before_script:
         - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
         - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
