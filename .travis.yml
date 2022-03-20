@@ -1,0 +1,13 @@
+jobs:
+  include:
+    - language: c
+      before_script:
+        - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
+        - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
+        - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_posix olq_posix.c
+      script:
+        - cmp olq.c <(./olq)
+        - cmp olq_ascii.c <(./olq_ascii)
+        - cmp olq_posix.c <(./olq_posix)
+notifications:
+  email: false
