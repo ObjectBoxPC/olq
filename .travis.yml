@@ -66,6 +66,13 @@ jobs:
       script:
         - cmp olq.js <(node olq.js)
         - cmp olq_es6.js <(node olq_es6.js)
+    - name: lua
+      language: minimal
+      before_install:
+        - sudo apt-get update -qq
+        - sudo apt-get install -y lua50
+      script:
+        - cmp olq.lua <(lua olq.lua)
     - name: perl
       language: perl
       install: skip
