@@ -1,0 +1,1 @@
+p = "p = %p; printf p, p"; printf p, p
