@@ -26,11 +26,17 @@ jobs:
         - cmp olq_posix.c <(./olq_posix)
     - name: csharp
       language: csharp
+      mono: none
+      dotnet:
+        - 6.0.201
       install: skip
       before_script:
-        - csc olq.cs
+        - dotnet new console -o Olq
       script:
-        - cmp olq.cs <(mono olq.exe)
+        - cp olq.cs Olq/Program.cs
+        - cmp olq.cs <(dotnet run --project Olq)
+        - cp olq_cs9.cs Olq/Program.cs
+        - cmp olq_cs9.cs <(dotnet run --project Olq)
     - name: emojicode
       language: minimal
       dist: bionic
