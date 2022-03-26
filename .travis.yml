@@ -96,6 +96,11 @@ jobs:
         - rustc olq.rs
       script:
         - cmp olq.rs <(./olq)
+    - name: ruby
+      language: ruby
+      install: skip
+      script:
+        - cmp olq.rb <(ruby olq.rb)
     - name: shell
       language: minimal
       script:

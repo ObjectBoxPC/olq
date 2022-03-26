@@ -62,6 +62,10 @@ The program is compatible with PHP 4.
 
 The main program uses the `str.format` method introduced in Python 3, even though the code that uses the older printf-style string formatting (`olq_percent.py`) is shorter.
 
+## Ruby
+
+The program is compatible with Ruby 2.0.
+
 ## Rust
 
 This posed a challenge because the format string to `print!` and related macros must be a string literal, which means that a format string cannot be its own argument as in other languages. The solution is admittedly not original, as it is adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v.
