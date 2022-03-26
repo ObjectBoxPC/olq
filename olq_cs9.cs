@@ -1,0 +1,1 @@
+var p = "var p = {1}{0}{1}; System.Console.Write(p, p, '{1}');"; System.Console.Write(p, p, '"');
