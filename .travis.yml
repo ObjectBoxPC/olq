@@ -12,12 +12,12 @@ jobs:
         - i686-linux-gnu-as -o olq_linux_x86.o olq_linux_x86.s
         - i686-linux-gnu-ld -o olq_linux_x86 olq_linux_x86.o
       script:
-        - cmp olq_linux_x86-64.s <(./olq_linux_x86-64)
-        - cmp olq_linux_x86.s <(./olq_linux_x86)
+        - ./olq_linux_x86_64 | cmp olq_linux_x86-64.s -
+        - ./olq_linux_x86 | cmp olq_linux_x86.s -
     - name: awk
       language: minimal
       script:
-        - cmp olq.awk <(echo | gawk --posix -f olq.awk)
+        - echo | gawk --posix -f olq.awk | cmp olq.awk -
     - name: c
       language: c
       before_script:
@@ -25,9 +25,9 @@ jobs:
         - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
         - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_posix olq_posix.c
       script:
-        - cmp olq.c <(./olq)
-        - cmp olq_ascii.c <(./olq_ascii)
-        - cmp olq_posix.c <(./olq_posix)
+        - ./olq | cmp olq.c -
+        - ./olq_ascii | cmp olq_ascii.c -
+        - ./olq_posix | cmp olq_posix.c -
     - name: csharp
       language: csharp
       mono: none
@@ -38,9 +38,9 @@ jobs:
         - dotnet new console -o Olq
       script:
         - cp olq.cs Olq/Program.cs
-        - cmp olq.cs <(dotnet run --project Olq)
+        - dotnet run --project Olq | cmp olq.cs -
         - cp olq_cs9.cs Olq/Program.cs
-        - cmp olq_cs9.cs <(dotnet run --project Olq)
+        - dotnet run --project Olq | cmp olq_cs9.cs -
     - name: emojicode
       language: minimal
       dist: bionic
@@ -50,77 +50,77 @@ jobs:
       before_script:
         - (cd Emojicode-1.0-beta.2-Linux-x86_64 && ./emojicodec ../olq.emojic)
       script:
-        - cmp olq.emojic <(./olq)
+        - ./olq | cmp olq.emojic -
     - name: forth
       language: minimal
       before_install:
         - sudo apt-get update -qq
         - sudo apt-get install -y gforth
       script:
-        - cmp olq.fs <(gforth olq.fs -e BYE)
+        - gforth olq.fs -e BYE | cmp olq.fs -
     - name: go
       language: go
       install: skip
       script:
-        - cmp olq.go <(go run olq.go)
+        - go run olq.go | cmp olq.go -
     - name: haskell
       language: haskell
       install: skip
       script:
-        - cmp olq.hs <(runghc olq.hs)
+        - runghc olq.hs | cmp olq.hs -
     - name: java
       language: java
       install: skip
       before_script:
         - javac olq.java
       script:
-        - cmp olq.java <(java Q)
+        - java Q | cmp olq.java -
     - name: javascript
       language: node_js
       node_js:
         - node
       install: skip
       script:
-        - cmp olq.js <(node olq.js)
-        - cmp olq_es6.js <(node olq_es6.js)
+        - node olq.js | cmp olq.js -
+        - node olq_es6.js | cmp olq_es6.js -
     - name: lua
       language: minimal
       before_install:
         - sudo apt-get update -qq
         - sudo apt-get install -y lua50
       script:
-        - cmp olq.lua <(lua olq.lua)
+        - lua olq.lua | cmp olq.lua -
     - name: perl
       language: perl
       install: skip
       script:
-        - cmp olq.pl <(perl olq.pl)
-        - cmp olq_ascii.pl <(perl olq_ascii.pl)
+        - perl olq.pl | cmp olq.pl -
+        - perl olq_ascii.pl | cmp olq_ascii.pl -
     - name: php
       language: php
       script:
-        - cmp olq.php <(php olq.php)
+        - php olq.php | cmp olq.php -
     - name: python
       language: python
       install: skip
       script:
-        - cmp olq.py <(python olq.py)
-        - cmp olq_percent.py <(python olq_percent.py)
+        - python olq.py | cmp olq.py -
+        - python olq_percent.py | cmp olq_percent.py -
     - name: rust
       language: rust
       install: skip
       before_script:
         - rustc olq.rs
       script:
-        - cmp olq.rs <(./olq)
+        - ./olq | cmp olq.rs -
     - name: ruby
       language: ruby
       install: skip
       script:
-        - cmp olq.rb <(ruby olq.rb)
+        - ruby olq.rb | cmp olq.rb -
     - name: shell
       language: minimal
       script:
-        - cmp olq.sh <(sh olq.sh)
+        - sh olq.sh | cmp olq.sh -
 notifications:
   email: false
