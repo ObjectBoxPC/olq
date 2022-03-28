@@ -14,6 +14,10 @@ jobs:
       script:
         - cmp olq_linux_x86-64.s <(./olq_linux_x86-64)
         - cmp olq_linux_x86.s <(./olq_linux_x86)
+    - name: awk
+      language: minimal
+      script:
+        - cmp olq.awk <(echo | gawk --posix -f olq.awk)
     - name: c
       language: c
       before_script:

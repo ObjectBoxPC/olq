@@ -16,6 +16,10 @@ The entry point is named `s` rather than the conventional `_start`. As a result,
 
 GNU Assembler requires a newline at the end of the source code, although it only gives a warning and still assembles the code without it. The code can be shortened if the newline is omitted.
 
+## AWK
+
+The program is compatible with POSIX.1-2004. The input is not used.
+
 ## C
 
 The main program is compatible with C89 and makes very few assumptions. The code can be shortened a bit by assuming that the character encoding is ASCII (`olq_ascii.c`) and also by assuming support for POSIX-style positional format specifiers (`olq_posix.c`). (Of course, these two assumptions may be combined.)

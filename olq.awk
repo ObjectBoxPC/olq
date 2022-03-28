@@ -1,0 +1,1 @@
+BEGIN { p = "BEGIN { p = \"%s\"; qp = p; gsub(/[\"\\\\]/, \"\\\\\\\\&\", qp); printf p, qp }"; qp = p; gsub(/["\\]/, "\\\\&", qp); printf p, qp }
