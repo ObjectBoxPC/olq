@@ -76,4 +76,4 @@ This posed a challenge because the format string to `print!` and related macros 
 
 ## Shell
 
-The program is compatible with the POSIX shell language as defined in POSIX.1-2001.
+The program is compatible with the POSIX shell language as defined in POSIX.1-2004.
