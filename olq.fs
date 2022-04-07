@@ -1,1 +1,1 @@
-let (q, p) = ('"', "let (q, p) = ('', ) in printf %s%c%s%c%s%c%s%c%s%c%s (p.Substring(0, 15)) q (p.Substring(15, 3)) q p q (p.Substring(18, 12)) q (p.Substring(30, 22)) q (p.Substring(52))") in printf "%s%c%s%c%s%c%s%c%s%c%s" (p.Substring(0, 15)) q (p.Substring(15, 3)) q p q (p.Substring(18, 12)) q (p.Substring(30, 22)) q (p.Substring(52))
+let p = @" in printf @""let p = @""""%s""""%s"" (p.Replace(@"""""""", @"""""""""""")) p" in printf @"let p = @""%s""%s" (p.Replace(@"""", @"""""")) p
