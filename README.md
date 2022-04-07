@@ -34,6 +34,10 @@ The main program is compatible with C# 1.0 and essentially all implementations o
 
 The program is compatible with Emojicode 0.7.0 and later (latest version tested is Emojicode 1.0 beta 2).
 
+## F#
+
+The program is compatible with F# 2.0.
+
 ## Forth
 
 The program is compatible with ANS Forth.
