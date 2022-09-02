@@ -80,6 +80,7 @@ jobs:
         - java Q | cmp olq.java -
     - name: javascript
       language: node_js
+      dist: focal
       node_js:
         - node
       install: skip
