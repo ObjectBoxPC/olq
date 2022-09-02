@@ -1,1 +1,1 @@
-END { p = "END { p = \"%s\"; qp = p; gsub(/[\"\\\\]/, \"\\\\\\\\&\", qp); printf p, qp }"; qp = p; gsub(/["\\]/, "\\\\&", qp); printf p, qp }
+END { p = "END { p = \"%s\"; q = p; gsub(/[\"\\\\]/, \"\\\\\\\\&\", q); printf p, q }"; q = p; gsub(/["\\]/, "\\\\&", q); printf p, q }
