@@ -82,6 +82,10 @@ The program is compatible with Ruby 2.0.
 
 This posed a challenge because the format string to `print!` and related macros must be a string literal, which means that a format string cannot be its own argument as in other languages. The solution is admittedly not original, as it is adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v.
 
+## Scheme
+
+The program is compatible with R5RS.
+
 ## Shell
 
 The program is compatible with the POSIX shell language as defined in POSIX.1-2004.
