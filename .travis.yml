@@ -126,7 +126,7 @@ jobs:
       language: minimal
       before_install:
         - sudo apt-get update -qq
-        - sudo apt-get install -y guile-2.2
+        - sudo apt-get install -y guile-2.0
       script:
         - guile olq.scm | cmp olq.scm -
     - name: shell
