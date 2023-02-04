@@ -1,0 +1,5 @@
+shell:
+  stage: test
+  image: busybox:1-musl
+  script:
+    sh olq.sh | cmp olq.sh -
