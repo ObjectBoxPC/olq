@@ -40,8 +40,8 @@ forth:
   stage: test
   image: debian:bullseye
   before_script:
-    - sudo apt-get update -qq
-    - sudo apt-get install -y gforth
+    - apt-get update -qq
+    - apt-get install -y gforth
   script:
     - gforth olq.fth -e BYE | cmp olq.fth -
 go:
