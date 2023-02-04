@@ -73,7 +73,7 @@ lua:
     - apk update
     - apk add lua5.4
   script:
-    - lua olq.lua | cmp olq.lua -
+    - lua5.4 olq.lua | cmp olq.lua -
 perl:
   stage: test
   image: perl:5-slim
