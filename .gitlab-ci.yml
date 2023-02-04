@@ -25,7 +25,7 @@ c:
     - ./olq_ascii | cmp olq_ascii.c -
     - ./olq_posix | cmp olq_posix.c -
 dotnet:
-  image: bitnami/dotnet-sdk:6
+  image: mcr.microsoft.com/dotnet/sdk:6.0-alpine
   before_script:
     - dotnet new console -o OlqCs
     - dotnet new console --language "F#" -o OlqFs
