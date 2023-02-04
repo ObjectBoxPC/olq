@@ -1,0 +1,131 @@
+assembly:
+  stage: test
+  image: debian:bullseye
+  before_script:
+    - apt-get update
+    - apt-get install -y binutils-x86-64-linux-gnu binutils-i686-linux-gnu
+    - x86_64-linux-gnu-as -o olq_linux_x86-64.o olq_linux_x86-64.s
+    - x86_64-linux-gnu-ld -o olq_linux_x86-64 -e s olq_linux_x86-64.o
+    - i686-linux-gnu-as -o olq_linux_x86.o olq_linux_x86.s
+    - i686-linux-gnu-ld -o olq_linux_x86 -e s olq_linux_x86.o
+  script:
+    - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
+awk:
+  stage: test
+  image: busybox:1-musl
+  script:
+    - echo | awk -f olq.awk | cmp olq.awk -
+c:
+  stage: test
+  image: gcc:12-bullseye
+  before_script:
+    - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
+    - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
+    - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_posix olq_posix.c
+  script:
+    - ./olq | cmp olq.c -
+    - ./olq_ascii | cmp olq_ascii.c -
+    - ./olq_posix | cmp olq_posix.c -
+dotnet:
+  image: mcr.microsoft.com/dotnet/sdk:6.0-alpine
+  before_script:
+    - dotnet new console -o OlqCs
+    - dotnet new console --language "F#" -o OlqFs
+  script:
+    - cp olq.cs OlqCs/Program.cs
+    - dotnet run --project OlqCs | cmp olq.cs -
+    - cp olq_cs9.cs OlqCs/Program.cs
+    - dotnet run --project OlqCs | cmp olq_cs9.cs -
+    - cp olq.fs OlqFs/Program.fs
+    - dotnet run --project OlqFs | cmp olq.fs -
+emojicode:
+  stage: test
+  image: debian:bullseye
+  before_script:
+    - apt-get update
+    - apt-get install -y wget g++ libtinfo5
+    - wget https://github.com/emojicode/emojicode/releases/download/v1.0-beta.2/Emojicode-1.0-beta.2-Linux-x86_64.tar.gz -O emojicode.tar.gz
+    - tar -xzf emojicode.tar.gz
+    - (cd Emojicode-1.0-beta.2-Linux-x86_64 && ./emojicodec ../olq.emojic)
+  script:
+    - ./olq | cmp olq.emojic -
+forth:
+  stage: test
+  image: debian:bullseye
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y gforth
+  script:
+    - gforth olq.fth -e BYE | cmp olq.fth -
+go:
+  stage: test
+  image: golang:1-alpine
+  script:
+    - go run olq.go | cmp olq.go -
+haskell:
+  stage: test
+  image: haskell:9-slim
+  script:
+    - runghc olq.hs | cmp olq.hs -
+java:
+  stage: test
+  image: eclipse-temurin:17-jdk-alpine
+  before_script:
+    - javac olq.java
+  script:
+    - java Q | cmp olq.java -
+javascript:
+  stage: test
+  image: node:18-alpine
+  script:
+    - node olq.js | cmp olq.js -
+lua:
+  stage: test
+  image: alpine:3
+  before_script:
+    - apk update
+    - apk add lua5.4
+  script:
+    - lua5.4 olq.lua | cmp olq.lua -
+perl:
+  stage: test
+  image: perl:5-slim
+  script:
+    - perl olq.pl | cmp olq.pl -
+    - perl olq_ascii.pl | cmp olq_ascii.pl -
+php:
+  stage: test
+  image: php:8-cli-alpine
+  script:
+    - php olq.php | cmp olq.php -
+python:
+  stage: test
+  image: python:3-alpine
+  script:
+    - python olq.py | cmp olq.py -
+    - python olq_percent.py | cmp olq_percent.py -
+rust:
+  stage: test
+  image: rust:1-alpine
+  before_script:
+    - rustc olq.rs
+  script:
+    - ./olq | cmp olq.rs -
+ruby:
+  stage: test
+  image: ruby:3-alpine
+  script:
+    - ruby olq.rb | cmp olq.rb -
+scheme:
+  stage: test
+  image: alpine:3
+  before_script:
+    - apk update
+    - apk add guile
+  script:
+    - guile olq.scm | cmp olq.scm -
+shell:
+  stage: test
+  image: busybox:1-musl
+  script:
+    - sh olq.sh | cmp olq.sh -
