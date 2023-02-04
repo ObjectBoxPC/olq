@@ -4,8 +4,8 @@ assembly:
   before_script:
     - apt-get update
     - apt-get install -y binutils-x86-64-linux-gnu binutils-i686-linux-gnu
-    - x86-64-linux-gnu-as -o olq_linux_x86-64.o olq_linux_x86-64.s
-    - x86-64-linux-gnu-ld -o olq_linux_x86-64 -e s olq_linux_x86-64.o
+    - x86_64-linux-gnu-as -o olq_linux_x86-64.o olq_linux_x86-64.s
+    - x86_64-linux-gnu-ld -o olq_linux_x86-64 -e s olq_linux_x86-64.o
     - i686-linux-gnu-as -o olq_linux_x86.o olq_linux_x86.s
     - i686-linux-gnu-ld -o olq_linux_x86 -e s olq_linux_x86.o
   script:
