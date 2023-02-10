@@ -1,1 +1,1 @@
-let p = @" in printf @""let p = @""""%s""""%s"" (p.Replace(@"""""""", @"""""""""""")) p" in printf @"let p = @""%s""%s" (p.Replace(@"""", @"""""")) p
+let p = @" in printf ""let p = @%A%s"" (p.Replace(""\"""", ""\""\"""")) p" in printf "let p = @%A%s" (p.Replace("\"", "\"\"")) p
