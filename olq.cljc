@@ -1,0 +1,1 @@
+(let [p "] (do (print \"(let [p \") (pr p) (print p)))"] (do (print "(let [p ") (pr p) (print p)))

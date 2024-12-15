@@ -26,6 +26,11 @@ c:
     - ./olq | cmp olq.c -
     - ./olq_ascii | cmp olq_ascii.c -
     - ./olq_posix | cmp olq_posix.c -
+clojure:
+  stage: test
+  image: clojure:temurin-21-alpine
+  script:
+    - clojure -M olq.cljc | cmp olq.cljc -
 dotnet:
   image: mcr.microsoft.com/dotnet/sdk:6.0-alpine
   before_script:
