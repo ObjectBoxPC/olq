@@ -17,7 +17,7 @@ awk:
     - echo | awk -f olq.awk | cmp olq.awk -
 c:
   stage: test
-  image: gcc:14-bullseye
+  image: gcc:14-bookworm
   before_script:
     - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
     - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
