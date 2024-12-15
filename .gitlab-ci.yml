@@ -78,6 +78,7 @@ javascript:
   image: node:22-alpine
   script:
     - node olq.js | cmp olq.js -
+    - node olq_es6.js | cmp olq_es6.js -
 lua:
   stage: test
   image: alpine:3
