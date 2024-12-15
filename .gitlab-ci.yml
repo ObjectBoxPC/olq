@@ -1,6 +1,6 @@
 assembly:
   stage: test
-  image: debian:bullseye
+  image: debian:bookworm
   before_script:
     - apt-get update
     - apt-get install -y binutils-x86-64-linux-gnu binutils-i686-linux-gnu
@@ -17,7 +17,7 @@ awk:
     - echo | awk -f olq.awk | cmp olq.awk -
 c:
   stage: test
-  image: gcc:12-bullseye
+  image: gcc:14-bullseye
   before_script:
     - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
     - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
@@ -32,7 +32,7 @@ clojure:
   script:
     - clojure -M olq.cljc | cmp olq.cljc -
 dotnet:
-  image: mcr.microsoft.com/dotnet/sdk:6.0-alpine
+  image: mcr.microsoft.com/dotnet/sdk:8.0-alpine
   before_script:
     - dotnet new console -o OlqCs
     - dotnet new console --language "F#" -o OlqFs
@@ -45,7 +45,7 @@ dotnet:
     - dotnet run --project OlqFs | cmp olq.fs -
 emojicode:
   stage: test
-  image: debian:bullseye
+  image: debian:bookworm
   before_script:
     - apt-get update
     - apt-get install -y wget g++ libtinfo5
@@ -56,7 +56,7 @@ emojicode:
     - ./olq | cmp olq.emojic -
 forth:
   stage: test
-  image: debian:bullseye
+  image: debian:bookworm
   before_script:
     - apt-get update -qq
     - apt-get install -y gforth
@@ -74,14 +74,14 @@ haskell:
     - runghc olq.hs | cmp olq.hs -
 java:
   stage: test
-  image: eclipse-temurin:17-jdk-alpine
+  image: eclipse-temurin:21-jdk-alpine
   before_script:
     - javac olq.java
   script:
     - java Q | cmp olq.java -
 javascript:
   stage: test
-  image: node:18-alpine
+  image: node:22-alpine
   script:
     - node olq.js | cmp olq.js -
 lua:
