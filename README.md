@@ -30,7 +30,7 @@ The declaration for `printf` at the beginning is needed because other code canno
 
 The main program is compatible with C# 1.0 and essentially all implementations of the BCL. The code can be shortened substantially by using top-level statements, introduced in C# 9 (`olq_cs9.cs`).
 
-### Clojure
+## Clojure
 
 The program is compatible with Clojure 1.0.
 
