@@ -4,7 +4,7 @@ This is a collection of one-line quines in several languages. A quine is a progr
 
 Although the quines are only one line, they are not attempts to find the shortest quines possible. Many "redundant" parts are kept to maintain some readability and good style. The quines are also meant to be portable across a wide variety of implementations, although some alternatives are provided that make certain assumptions.
 
-All original code is dedicated to the public domain under [Creative Commons CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (a copy is available in `LICENSE.txt`). The Rust code is available under [Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/) (a copy is available in `LICENSE-Rust.txt`), as it is derived from code that uses that license.
+All original code is dedicated to the public domain under [Creative Commons CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (a copy is available in `LICENSE.txt`).
 
 Note: Some files have a newline at the end while others do not. This is intentional because the output functions available in different languages either add a newline or omit it. In most cases it is easy to adjust the program to either add or remove a newline at the end of the file.
 
@@ -84,7 +84,9 @@ The program is compatible with Ruby 2.0.
 
 ## Rust
 
-This posed a challenge because the format string to `print!` and related macros must be a string literal, which means that a format string cannot be its own argument as in other languages. The solution is admittedly not original, as it is adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v.
+The program is compatible with Rust 1.0.
+
+A previous version of the program is adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v. That code is available under [Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/) (a copy is available in `LICENSE-Rust.txt`), as it is derived from code that uses that license.
 
 ## Scheme
 
