@@ -12,8 +12,6 @@ Note: Some files have a newline at the end while others do not. This is intentio
 
 Programs are available for Linux on x86 (32-bit) and x86-64 architectures, and are written for the GNU Assembler. They do not depend on the C standard library and should be statically linked. By their very nature, these programs are not portable across platforms.
 
-The entry point is named `s` rather than the conventional `_start`. As a result, the symbol must be explicitly specified to the linker. For GNU ld, this is given by the `-e` option.
-
 GNU Assembler requires a newline at the end of the source code, although it only gives a warning and still assembles the code without it. The code can be shortened if the newline is omitted.
 
 ## AWK
