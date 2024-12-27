@@ -12,7 +12,7 @@ assembly:
     - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
     - ./olq_linux_x86 | cmp olq_linux_x86.s -
   rules:
-    changes:
+    - changes:
       - olq_linux_*.s
 awk:
   stage: test
@@ -20,7 +20,7 @@ awk:
   script:
     - echo | awk -f olq.awk | cmp olq.awk -
   rules:
-    changes:
+    - changes:
       - olq.awk
 c:
   stage: test
@@ -34,7 +34,7 @@ c:
     - ./olq_ascii | cmp olq_ascii.c -
     - ./olq_posix | cmp olq_posix.c -
   rules:
-    changes:
+    - changes:
       - olq*.c
 clojure:
   stage: test
@@ -42,7 +42,7 @@ clojure:
   script:
     - clojure -M olq.cljc | cmp olq.cljc -
   rules:
-    changes:
+    - changes:
       - olq.cljc
 dotnet:
   image: mcr.microsoft.com/dotnet/sdk:8.0-alpine
@@ -57,7 +57,7 @@ dotnet:
     - cp olq.fs OlqFs/Program.fs
     - dotnet run --project OlqFs | cmp olq.fs -
   rules:
-    changes:
+    - changes:
       - olq*.cs
       - olq.fs
 emojicode:
@@ -66,7 +66,7 @@ emojicode:
   script:
     - emojicode olq.emojic | cmp olq.emojic -
   rules:
-    changes:
+    - changes:
       - olq.emojic
 forth:
   stage: test
@@ -77,7 +77,7 @@ forth:
   script:
     - gforth olq.fth -e BYE | cmp olq.fth -
   rules:
-    changes:
+    - changes:
       - olq.fth
 go:
   stage: test
@@ -85,7 +85,7 @@ go:
   script:
     - go run olq.go | cmp olq.go -
   rules:
-    changes:
+    - changes:
       - olq.go
 haskell:
   stage: test
@@ -93,7 +93,7 @@ haskell:
   script:
     - runghc olq.hs | cmp olq.hs -
   rules:
-    changes:
+    - changes:
       - olq.hs
 java:
   stage: test
@@ -103,7 +103,7 @@ java:
   script:
     - java Q | cmp olq.java -
   rules:
-    changes:
+    - changes:
       - olq.java
 javascript:
   stage: test
@@ -112,7 +112,7 @@ javascript:
     - node olq.js | cmp olq.js -
     - node olq_es6.js | cmp olq_es6.js -
   rules:
-    changes:
+    - changes:
       - olq*.js
 lua:
   stage: test
@@ -123,7 +123,7 @@ lua:
   script:
     - lua5.4 olq.lua | cmp olq.lua -
   rules:
-    changes:
+    - changes:
       - olq.lua
 perl:
   stage: test
@@ -132,7 +132,7 @@ perl:
     - perl olq.pl | cmp olq.pl -
     - perl olq_ascii.pl | cmp olq_ascii.pl -
   rules:
-    changes:
+    - changes:
       - olq*.pl
 php:
   stage: test
@@ -140,7 +140,7 @@ php:
   script:
     - php olq.php | cmp olq.php -
   rules:
-    changes:
+    - changes:
       - olq.php
 python:
   stage: test
@@ -149,7 +149,7 @@ python:
     - python olq.py | cmp olq.py -
     - python olq_percent.py | cmp olq_percent.py -
   rules:
-    changes:
+    - changes:
       - olq*.py
 rust:
   stage: test
@@ -159,7 +159,7 @@ rust:
   script:
     - ./olq | cmp olq.rs -
   rules:
-    changes:
+    - changes:
       - olq.rs
 ruby:
   stage: test
@@ -167,7 +167,7 @@ ruby:
   script:
     - ruby olq.rb | cmp olq.rb -
   rules:
-    changes:
+    - changes:
       - olq.rb
 scheme:
   stage: test
@@ -178,7 +178,7 @@ scheme:
   script:
     - guile olq.scm | cmp olq.scm -
   rules:
-    changes:
+    - changes:
       - olq.scm
 shell:
   stage: test
@@ -186,5 +186,5 @@ shell:
   script:
     - sh olq.sh | cmp olq.sh -
   rules:
-    changes:
+    - changes:
       - olq.sh
