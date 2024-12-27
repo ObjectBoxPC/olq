@@ -10,6 +10,7 @@ assembly:
     - i686-linux-gnu-ld -o olq_linux_x86 olq_linux_x86.o
   script:
     - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
+    - ./olq_linux_x86 | cmp olq_linux_x86.s -
 awk:
   stage: test
   image: busybox:1-musl
