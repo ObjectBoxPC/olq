@@ -11,11 +11,17 @@ assembly:
   script:
     - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
     - ./olq_linux_x86 | cmp olq_linux_x86.s -
+  rules:
+    changes:
+      - olq_linux_*.s
 awk:
   stage: test
   image: busybox:1-musl
   script:
     - echo | awk -f olq.awk | cmp olq.awk -
+  rules:
+    changes:
+      - olq.awk
 c:
   stage: test
   image: gcc:14-bookworm
@@ -27,11 +33,17 @@ c:
     - ./olq | cmp olq.c -
     - ./olq_ascii | cmp olq_ascii.c -
     - ./olq_posix | cmp olq_posix.c -
+  rules:
+    changes:
+      - olq*.c
 clojure:
   stage: test
   image: clojure:temurin-21-alpine
   script:
     - clojure -M olq.cljc | cmp olq.cljc -
+  rules:
+    changes:
+      - olq.cljc
 dotnet:
   image: mcr.microsoft.com/dotnet/sdk:8.0-alpine
   before_script:
@@ -44,11 +56,18 @@ dotnet:
     - dotnet run --project OlqCs | cmp olq_cs9.cs -
     - cp olq.fs OlqFs/Program.fs
     - dotnet run --project OlqFs | cmp olq.fs -
+  rules:
+    changes:
+      - olq*.cs
+      - olq.fs
 emojicode:
   stage: test
   image: esolang/emojicode:2.4.0
   script:
     - emojicode olq.emojic | cmp olq.emojic -
+  rules:
+    changes:
+      - olq.emojic
 forth:
   stage: test
   image: debian:bookworm
@@ -57,16 +76,25 @@ forth:
     - apt-get install -y gforth
   script:
     - gforth olq.fth -e BYE | cmp olq.fth -
+  rules:
+    changes:
+      - olq.fth
 go:
   stage: test
   image: golang:1-alpine
   script:
     - go run olq.go | cmp olq.go -
+  rules:
+    changes:
+      - olq.go
 haskell:
   stage: test
   image: haskell:9-slim
   script:
     - runghc olq.hs | cmp olq.hs -
+  rules:
+    changes:
+      - olq.hs
 java:
   stage: test
   image: eclipse-temurin:21-jdk-alpine
@@ -74,12 +102,18 @@ java:
     - javac olq.java
   script:
     - java Q | cmp olq.java -
+  rules:
+    changes:
+      - olq.java
 javascript:
   stage: test
   image: node:22-alpine
   script:
     - node olq.js | cmp olq.js -
     - node olq_es6.js | cmp olq_es6.js -
+  rules:
+    changes:
+      - olq*.js
 lua:
   stage: test
   image: alpine:3
@@ -88,23 +122,35 @@ lua:
     - apk add lua5.4
   script:
     - lua5.4 olq.lua | cmp olq.lua -
+  rules:
+    changes:
+      - olq.lua
 perl:
   stage: test
   image: perl:5-slim
   script:
     - perl olq.pl | cmp olq.pl -
     - perl olq_ascii.pl | cmp olq_ascii.pl -
+  rules:
+    changes:
+      - olq*.pl
 php:
   stage: test
   image: php:8-cli-alpine
   script:
     - php olq.php | cmp olq.php -
+  rules:
+    changes:
+      - olq.php
 python:
   stage: test
   image: python:3-alpine
   script:
     - python olq.py | cmp olq.py -
     - python olq_percent.py | cmp olq_percent.py -
+  rules:
+    changes:
+      - olq*.py
 rust:
   stage: test
   image: rust:1-alpine
@@ -112,11 +158,17 @@ rust:
     - rustc olq.rs
   script:
     - ./olq | cmp olq.rs -
+  rules:
+    changes:
+      - olq.rs
 ruby:
   stage: test
   image: ruby:3-alpine
   script:
     - ruby olq.rb | cmp olq.rb -
+  rules:
+    changes:
+      - olq.rb
 scheme:
   stage: test
   image: alpine:3
@@ -125,8 +177,14 @@ scheme:
     - apk add guile
   script:
     - guile olq.scm | cmp olq.scm -
+  rules:
+    changes:
+      - olq.scm
 shell:
   stage: test
   image: busybox:1-musl
   script:
     - sh olq.sh | cmp olq.sh -
+  rules:
+    changes:
+      - olq.sh
