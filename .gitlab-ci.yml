@@ -9,7 +9,7 @@ assembly:
     - i686-linux-gnu-as -o olq_linux_x86.o olq_linux_x86.s
     - i686-linux-gnu-ld -o olq_linux_x86 olq_linux_x86.o
     - i686-linux-gnu-as -o olq_dos.o olq_dos.s
-    - i686-linux-gnu-ld -T olq_dos.ld -o olq_dos.com olq_dos.o
+    - i686-linux-gnu-ld -Ttext=0x100 -e 0x100 --oformat binary -o olq_dos.com olq_dos.o
     - printf "[autoexec]\nMOUNT C \"$PWD\"\nC:\nOLQ_DOS.COM > OLQ_DOS.LOG\nEXIT" > dosbox.conf
   script:
     - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
