@@ -1,6 +1,6 @@
 assembly:
   stage: test
-  image: debian:bookworm
+  image: debian:bookworm-slim
   before_script:
     - apt-get update
     - apt-get install -y --no-install-recommends binutils-x86-64-linux-gnu binutils-i686-linux-gnu dosbox
@@ -74,7 +74,7 @@ emojicode:
       - olq.emojic
 forth:
   stage: test
-  image: debian:bookworm
+  image: debian:bookworm-slim
   before_script:
     - apt-get update -qq
     - apt-get install -y gforth
