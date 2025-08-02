@@ -86,7 +86,7 @@ The program is compatible with Ruby 2.0.
 
 The program is compatible with Rust 1.0.
 
-A previous version of the program is adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v. That code is available under [Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/) (a copy is available in `LICENSE-Rust.txt`), as it is derived from code that uses that license.
+Note: A previous version of the program was adapted from a [submission to Programming-Idioms.org](https://www.programming-idioms.org/idiom/182/quine-program/4063/rust), originally added by r0t0m0l0t0v. That code is available under [Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/), as it is derived from code that uses that license.
 
 ## Scheme
 
