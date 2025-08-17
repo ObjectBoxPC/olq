@@ -14,7 +14,7 @@ assembly:
   script:
     - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
     - ./olq_linux_x86 | cmp olq_linux_x86.s -
-    - SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy dosbox && cmp olq_dos.s OLQ_DOS.LOG
+    - (SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy dosbox && cmp olq_dos.s OLQ_DOS.LOG)
   rules:
     - changes:
       - olq*.s
