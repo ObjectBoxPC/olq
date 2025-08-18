@@ -12,7 +12,7 @@ Note: Some files have a newline at the end while others do not. This is intentio
 
 Programs are available for Linux on x86 (32-bit), Linux on x86-64, and DOS on x86 (16-bit), and are written for the GNU Assembler. They do not depend on the C standard library and should be statically linked. By their very nature, these programs are not portable across platforms.
 
-The DOS program requires a separate linker script to set the output format and memory addresses.
+The DOS program requires some linker options to set the output format and memory addresses: `-Ttext=0x100 -e 0x100 --oformat binary`
 
 GNU Assembler requires a newline at the end of the source code, although it only gives a warning and still assembles the code without it. The code can be shortened if the newline is omitted.
 
