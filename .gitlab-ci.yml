@@ -10,11 +10,13 @@ assembly:
     - i686-linux-gnu-ld -o olq_linux_x86 olq_linux_x86.o
     - i686-linux-gnu-as -o olq_dos.o olq_dos.s
     - i686-linux-gnu-ld -Ttext=0x100 -e 0x100 --oformat binary -o olq_dos.com olq_dos.o
-    - printf "[autoexec]\nMOUNT C \"$PWD\"\nC:\nOLQ_DOS.COM > OLQ_DOS.LOG\nEXIT" > dosbox.conf
+    - export SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy
   script:
     - ./olq_linux_x86-64 | cmp olq_linux_x86-64.s -
     - ./olq_linux_x86 | cmp olq_linux_x86.s -
-    - (SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy dosbox && cmp olq_dos.s OLQ_DOS.LOG)
+    - printf "[autoexec]\nMOUNT C \"$PWD\"\nC:\nOLQ_DOS.COM > OLQ_DOS.LOG\nEXIT" > dosbox.conf
+    - dosbox
+    - cmp olq_dos.s OLQ_DOS.LOG
   rules:
     - changes:
       - olq*.s
