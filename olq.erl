@@ -1,0 +1,1 @@
+-module(olq). -export([main/1]). main(_) -> P = "-module(olq). -export([main/1]). main(_) -> P = ~p, io:format(P, [P]).", io:format(P, [P]).

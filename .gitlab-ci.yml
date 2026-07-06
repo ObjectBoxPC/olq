@@ -74,6 +74,15 @@ emojicode:
   rules:
     - changes:
       - olq.emojic
+erlang:
+  stage: test
+  image: erlang:29-alpine
+  script:
+    - erlc olq.c
+    - escript olq.beam | cmp olq.erl
+  rules:
+    - changes:
+      - olq.erl
 forth:
   stage: test
   image: debian:bookworm-slim

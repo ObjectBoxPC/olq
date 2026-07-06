@@ -38,6 +38,12 @@ The program is compatible with Clojure 1.0.
 
 The program is compatible with Emojicode 0.7.0 and later (latest version tested is Emojicode 1.0 beta 2).
 
+## Erlang
+
+The program is compatible with Erlang/OTP 17.
+
+The program cannot be run with `escript` directly because `escript` expects the first line to be an interpreter line or "shebang." While the module and export attributes are usually optional for programs run with `escript`, they must be included here because the program must be compiled first.
+
 ## F#
 
 The program is compatible with F# 2.0.
