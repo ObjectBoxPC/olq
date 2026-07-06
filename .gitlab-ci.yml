@@ -78,7 +78,7 @@ erlang:
   stage: test
   image: erlang:29-alpine
   script:
-    - erlc olq.c
+    - erlc olq.erl
     - escript olq.beam | cmp olq.erl
   rules:
     - changes:
