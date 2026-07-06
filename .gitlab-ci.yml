@@ -1,6 +1,6 @@
 assembly:
   stage: test
-  image: debian:bookworm-slim
+  image: debian:trixie-slim
   before_script:
     - apt-get update
     - apt-get install -y --no-install-recommends binutils-x86-64-linux-gnu binutils-i686-linux-gnu dosbox
@@ -30,7 +30,7 @@ awk:
       - olq.awk
 c:
   stage: test
-  image: gcc:14-bookworm
+  image: gcc:16-trixie
   before_script:
     - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq olq.c
     - gcc -Wall -Wextra -Werror -ansi -pedantic -o olq_ascii olq_ascii.c
@@ -44,14 +44,14 @@ c:
       - olq*.c
 clojure:
   stage: test
-  image: clojure:temurin-21-alpine
+  image: clojure:temurin-25-alpine
   script:
     - clojure -M olq.cljc | cmp olq.cljc -
   rules:
     - changes:
       - olq.cljc
 dotnet:
-  image: mcr.microsoft.com/dotnet/sdk:8.0-alpine
+  image: mcr.microsoft.com/dotnet/sdk:10.0-alpine
   before_script:
     - dotnet new console -o OlqCs
     - dotnet new console --language "F#" -o OlqFs
@@ -68,7 +68,7 @@ dotnet:
       - olq.fs
 emojicode:
   stage: test
-  image: esolang/emojicode:2.4.0
+  image: esolang/emojicode:2.6.0
   script:
     - emojicode olq.emojic | cmp olq.emojic -
   rules:
@@ -85,7 +85,7 @@ erlang:
       - olq.erl
 forth:
   stage: test
-  image: debian:bookworm-slim
+  image: debian:trixie-slim
   before_script:
     - apt-get update -qq
     - apt-get install -y gforth
@@ -112,7 +112,7 @@ haskell:
       - olq.hs
 java:
   stage: test
-  image: eclipse-temurin:21-jdk-alpine
+  image: eclipse-temurin:25-jdk-alpine
   before_script:
     - javac olq.java
   script:
@@ -122,7 +122,7 @@ java:
       - olq.java
 javascript:
   stage: test
-  image: node:22-alpine
+  image: node:26-alpine
   script:
     - node olq.js | cmp olq.js -
     - node olq_es6.js | cmp olq_es6.js -
@@ -134,9 +134,9 @@ lua:
   image: alpine:3
   before_script:
     - apk update
-    - apk add lua5.4
+    - apk add lua5.5
   script:
-    - lua5.4 olq.lua | cmp olq.lua -
+    - lua5.5 olq.lua | cmp olq.lua -
   rules:
     - changes:
       - olq.lua
