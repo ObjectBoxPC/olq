@@ -52,16 +52,11 @@ clojure:
       - olq.cljc
 dotnet:
   image: mcr.microsoft.com/dotnet/sdk:10.0-alpine
-  before_script:
-    - dotnet new console -o OlqCs
-    - dotnet new console --language "F#" -o OlqFs
   script:
-    - cp olq.cs OlqCs/Program.cs
-    - dotnet run --project OlqCs | cmp olq.cs -
-    - cp olq_cs9.cs OlqCs/Program.cs
-    - dotnet run --project OlqCs | cmp olq_cs9.cs -
-    - cp olq.fs OlqFs/Program.fs
-    - dotnet run --project OlqFs | cmp olq.fs -
+    - dotnet run --file olq.cs | cmp olq.cs -
+    - dotnet run --file olq_cs9.cs | cmp olq_cs9.cs -
+    - cp olq.fs olq.fsx
+    - dotnet fsi olq.fsx | cmp olq.fs -
   rules:
     - changes:
       - olq*.cs
