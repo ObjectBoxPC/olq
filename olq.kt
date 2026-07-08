@@ -1,0 +1,1 @@
+fun main() { val p = $$"fun main() { val p = $$%c%s%1$c; System.out.printf(p, '%<c', p); }"; System.out.printf(p, '"', p); }

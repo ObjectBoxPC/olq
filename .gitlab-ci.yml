@@ -124,6 +124,19 @@ javascript:
   rules:
     - changes:
       - olq*.js
+kotlin:
+  stage: test
+  image: eclipse-temurin:25-jdk-alpine
+  before_script:
+    - apk -U add bash
+    - wget https://github.com/JetBrains/kotlin/releases/download/v2.4.0/kotlin-compiler-2.4.0.zip
+    - unzip kotlin-compiler-2.4.0.zip
+    - kotlinc/bin/kotlinc olq.kt
+  script:
+    - kotlinc/bin/kotlin OlqKt | cmp olq.kt -
+  rules:
+    - changes:
+      - olq.kt
 lua:
   stage: test
   image: alpine:3

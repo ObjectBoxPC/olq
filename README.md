@@ -68,6 +68,10 @@ The program is compatible with Java SE 5 (when the `PrintStream.printf` and rela
 
 The main program is compatible with ECMAScript 5 (when the JSON functions were added). The code can be shortened by using some ECMAScript 6 features (`olq_es6.js`), namely template literals and arrow functions.
 
+## Kotlin
+
+The program is compatible with Kotlin 2.2 (when multi-dollar string interpolation was added to the stable language).
+
 ## Lua
 
 The program is compatible with Lua 5.0.
