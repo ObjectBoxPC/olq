@@ -74,7 +74,7 @@ erlang:
   image: erlang:29-alpine
   script:
     - erlc olq.erl
-    - escript olq.beam | cmp olq.erl
+    - escript olq.beam | cmp olq.erl -
   rules:
     - changes:
       - olq.erl
