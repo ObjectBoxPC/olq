@@ -52,10 +52,11 @@ clojure:
       - olq.cljc
 dotnet:
   image: mcr.microsoft.com/dotnet/sdk:10.0-alpine
+  before_script:
+    - cp olq.fs olq.fsx
   script:
     - dotnet run --file olq.cs | cmp olq.cs -
     - dotnet run --file olq_cs9.cs | cmp olq_cs9.cs -
-    - cp olq.fs olq.fsx
     - dotnet fsi olq.fsx | cmp olq.fs -
   rules:
     - changes:
@@ -72,8 +73,9 @@ emojicode:
 erlang:
   stage: test
   image: erlang:29-alpine
-  script:
+  before_script:
     - erlc olq.erl
+  script:
     - escript olq.beam | cmp olq.erl -
   rules:
     - changes:
